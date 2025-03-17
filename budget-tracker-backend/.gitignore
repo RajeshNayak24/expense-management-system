@@ -1,0 +1,10 @@
+# Virtual environment
+budgetenv/
+.env
+*.pyc
+__pycache__/
+instance/
+db.sqlite3
+.mypy_cache/
+# Flask logs
+logs/
