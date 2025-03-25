@@ -8,3 +8,6 @@ db.sqlite3
 .mypy_cache/
 # Flask logs
 logs/
+venv/
+
+
