@@ -2,7 +2,7 @@ import Employee from '../models/Employee.js'
 import Expense from '../models/Expense.js'
 import mongoose from 'mongoose'
 
-// GET /manager/allDetails
+
 export const getAllManagerDetails = async (req, res) => {
   try {
     const managers = await Employee.find({ role: 'MANAGER' }).select('name email _id')
@@ -12,7 +12,7 @@ export const getAllManagerDetails = async (req, res) => {
   }
 }
 
-// GET /expense/employeesUnderManger?mngId=...
+
 export const getEmployeesUnderManager = async (req, res) => {
   try {
     const { mngId } = req.query
@@ -29,11 +29,11 @@ export const getEmployeesUnderManager = async (req, res) => {
   }
 }
 
-// GET /expense/expensesUnderManger?mngId=...
+
 export const getExpensesUnderManager = async (req, res) => {
   try {
     const { mngId } = req.query
-    // first get employees under manager
+    
     const employees = await Employee.find({ managerId: mngId }).select('_id')
     const empIds = employees.map(emp => emp._id)
 

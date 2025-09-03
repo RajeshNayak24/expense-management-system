@@ -2,7 +2,7 @@ import Employee from "../models/Employee.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// POST /login
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;

@@ -10,11 +10,11 @@ async function seed() {
 
     const hashedPassword = await bcrypt.hash('123456', 10)
 
-    // Clear existing data
+
     await Employee.deleteMany({})
     await Expense.deleteMany({})
 
-    // Create Managers
+
     const manager1 = new Employee({
       name: 'Manager One',
       email: 'manager1@example.com',
@@ -32,7 +32,7 @@ async function seed() {
     await manager1.save()
     await manager2.save()
 
-    // Create Employees under managers
+
     const emp1 = new Employee({
       name: 'Employee One',
       email: 'emp1@example.com',
@@ -70,7 +70,7 @@ async function seed() {
     await emp3.save()
     await emp4.save()
 
-    // Create some sample expenses
+ 
     const expenses = [
       { empId: emp1._id, category: 'Food', amount: 100, status: 'PENDING' },
       { empId: emp1._id, category: 'Travel', amount: 50, status: 'APPROVED' },

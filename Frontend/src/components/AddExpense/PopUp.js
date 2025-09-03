@@ -1,11 +1,9 @@
-import { Dialog, DialogContent, DialogTitle, Button, IconButton,Slide, Card } from "@mui/material";
+import { Dialog, DialogContent, DialogTitle, Button, IconButton,Slide } from "@mui/material";
 import React,{useState} from "react";
-import FormCard from "./ExpenseForm";
 import Form from "./ExpenseForm";
 import CloseIcon from '@mui/icons-material/Close';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
-import backimg from '../../Images/topAdp.PNG'
-import bk from '../../Images/bottomAdp.PNG';
+
 
 
 
@@ -33,7 +31,6 @@ function PopUp(props){
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
               
                 <DialogTitle style={{backgroundColor:"#121c4e",color:'white'}}>
-                <img src="https://th.bing.com/th?id=OIP.mvzumO18d4Syeg31wW8yRQHaFj&w=288&h=216&c=8&rs=1&qlt=90&o=6&dpr=1.7&pid=3.1&rm=2" style={{width:"45px",marginTop:"0px",paddingRight:'3px',marginRight:'4px'}}></img>
                 Expense Apply Form
                 
                 <IconButton

@@ -23,7 +23,6 @@ const viewAllButtonStyle = {
 };
 
 function ExpenseHistory() {
-  // --- State Management ---
   const [isBulkApprovalOpen, setIsBulkApprovalOpen] = useState(false);
   const [isViewAllOpen, setIsViewAllOpen] = useState(false);
 
@@ -38,7 +37,6 @@ function ExpenseHistory() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(4);
 
-  // --- Fetch Data ---
   useEffect(() => {
     getExpenseByManager()
       .then((response) => {
@@ -49,7 +47,6 @@ function ExpenseHistory() {
       });
   }, []);
 
-  // --- Sorting ---
   const handleSort = (property) => () => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -66,7 +63,6 @@ function ExpenseHistory() {
     });
   }, [data, orderBy, order]);
 
-  // --- Pagination ---
   const handleChangePage = (_, newPage) => setPage(newPage);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -76,7 +72,6 @@ function ExpenseHistory() {
   const startIndex = page * rowsPerPage;
   const paginatedData = sortedData.slice(startIndex, startIndex + rowsPerPage);
 
-  // --- Handlers ---
   const openBulkApproval = () => setIsBulkApprovalOpen(true);
   const closeBulkApproval = () => setIsBulkApprovalOpen(false);
 
@@ -89,7 +84,6 @@ function ExpenseHistory() {
 
   return (
     <div>
-      {/* Header Row */}
       <div className="row">
         <div className="col">
           <h4>Pending Approvals</h4>
@@ -105,7 +99,6 @@ function ExpenseHistory() {
         </div>
       </div>
 
-      {/* Table */}
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -181,7 +174,6 @@ function ExpenseHistory() {
         </Table>
       </TableContainer>
 
-      {/* Pagination */}
       <TablePagination
         rowsPerPageOptions={[4, 8, 12]}
         component="div"
@@ -192,7 +184,6 @@ function ExpenseHistory() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
 
-      {/* Popups */}
       <ViewAllPopUp open={isBulkApprovalOpen} handleClose={closeBulkApproval} />
       <EmployeeDetailsPopUp
         open={isViewAllOpen}

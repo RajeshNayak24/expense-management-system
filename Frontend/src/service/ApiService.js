@@ -1,15 +1,17 @@
 import axios from "axios";
 
-let currentUserId = null;
-let currentManagerId = null;
+let currentUserId = localStorage.getItem("currentUserId") || null;
+let currentManagerId = localStorage.getItem("currentUserId") || null;
 
 export const setUser = (userId) => {
   currentUserId = userId;
+  localStorage.setItem("currentUserId", userId);
   console.log("✅ Current User ID set:", currentUserId);
 };
 
 export const setMng = (mngId) => {
   currentManagerId = mngId;
+  localStorage.setItem("currentManagerId", mngId);
   console.log("✅ Current Manager ID set:", currentManagerId);
 };
 
@@ -18,6 +20,8 @@ export const auth = async (user) => {
     const response = await axios.post("http://localhost:8080/login", user);
 
     const { token, user: userData } = response.data;
+    console.log("Login response:", response.data);
+    console.log("Login rajesh:", userData);
 
     localStorage.setItem("SavedToken", token);
     localStorage.setItem("Loginstatus", "true");
@@ -115,6 +119,8 @@ export const CategoryForLineChart = async () => {
 };
 
 export const EmployeeDetails = async () => {
+  console.log("🟢 Debug: currentUserId =", currentUserId);
+  console.log("🟢 Debug: SavedToken =", localStorage.getItem("SavedToken"));
   return await axios.get(
     `http://localhost:8080/employee/Details/${currentUserId}`,
     { headers: { Authorization: localStorage.getItem("SavedToken") } }

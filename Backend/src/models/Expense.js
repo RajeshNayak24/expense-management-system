@@ -6,7 +6,7 @@ const expenseSchema = new mongoose.Schema({
   amount: { type: Number, required: true },
   date: { type: Date, default: Date.now },
   status: { type: String, enum: ['PENDING', 'APPROVED', 'REJECTED'], default: 'PENDING' },
-  receiptUrl: { type: String } // for file uploads
+  receiptUrl: { type: String } 
 }, { timestamps: true })
 
 export default mongoose.model('Expense', expenseSchema)

@@ -63,7 +63,7 @@ const ViewAllPopUp = ({ open, handleClose }) => {
   console.log(sortedData);
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(8); // You can set the number of rows per page as per your preference
+  const [rowsPerPage, setRowsPerPage] = useState(8);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -71,7 +71,7 @@ const ViewAllPopUp = ({ open, handleClose }) => {
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
-    setPage(0); // Reset to the first page when changing rows per page
+    setPage(0);
   };
 
   const startIndex = page * rowsPerPage;

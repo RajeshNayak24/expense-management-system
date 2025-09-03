@@ -19,12 +19,11 @@ function Login() {
   async function submitHandler(e) {
     e.preventDefault();
     try {
-      const res = await auth(user); // this now returns token + user
+      const res = await auth(user);
       console.log("res and res.token: ", res, res.token);
       if (res && res.token) {
         localStorage.setItem("Loginstatus", "true");
 
-        // role-based redirect
         if (res.user.role === "MANAGER") {
           navigate("/dashboard/manager");
         } else {

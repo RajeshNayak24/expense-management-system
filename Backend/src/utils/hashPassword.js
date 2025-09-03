@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
 
-const password = process.argv[2] // take password from command line
+const password = process.argv[2] 
 
 if (!password) {
   console.log("❌ Usage: node src/utils/hashPassword.js <your-password>")

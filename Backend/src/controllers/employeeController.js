@@ -1,6 +1,6 @@
 import Employee from "../models/Employee.js";
 
-// GET /employee/Details/:id
+
 export const getEmployeeDetails = async (req, res) => {
   try {
     const employee = await Employee.findById(req.params.id).select("-password");
@@ -10,7 +10,7 @@ export const getEmployeeDetails = async (req, res) => {
       name: employee.name,
       email: employee.email,
       role: employee.role,
-      mgnId: employee.managerId || null, // frontend reads mgnId})
+      mgnId: employee.managerId || null, 
     });
   } catch (err) {
     res.status(500).json({ error: err.message });

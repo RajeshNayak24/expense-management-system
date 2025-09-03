@@ -4,7 +4,7 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 
-// routes (we will add later)
+
 import expenseRoutes from './routes/expense.js'
 import employeeRoutes from './routes/employee.js'
 import authRoutes from './routes/auth.js'
@@ -13,7 +13,7 @@ import managerRoutes from './routes/manager.js'
 
 const app = express()
 
-// Middleware
+
 app.use(helmet())
 app.use(cors())
 app.use(express.json())
@@ -21,12 +21,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(morgan('dev'))
 
-// app.get("/", (req, res) => res.send("Hello World!"));
 
-// Health check
 app.get('/health', (req, res) => res.json({ status: 'ok' }))
 
-// API routes
 app.use('/expense', expenseRoutes)
 app.use('/employee', employeeRoutes)
 app.use('/', authRoutes)
