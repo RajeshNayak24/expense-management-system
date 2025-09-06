@@ -187,29 +187,47 @@ function ExpenseHistory() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedData.map((expense) => (
-              <TableRow key={expense.expense_id}>
-                <TableCell>{expense.expense_id}</TableCell>
-                <TableCell>{expense.date}</TableCell>
-                <TableCell>{expense.category}</TableCell>
-                <TableCell>₹ {expense.amount.toFixed(2)}</TableCell>
-                <TableCell>{expense.status}</TableCell>
+            {sortedData.map((expense, index) => (
+              <TableRow key={expense._id || index}>
+                <TableCell>{expense._id || index}</TableCell>
+                <TableCell>
+                  {expense.date
+                    ? new Date(expense.date).toLocaleDateString()
+                    : "—"}
+                </TableCell>
+                <TableCell>
+                  {typeof expense.category === "object"
+                    ? expense.category.name 
+                    : expense.category}
+                </TableCell>
+                <TableCell>
+                  ₹ {Number(expense.amount || 0).toFixed(2)}
+                </TableCell>
+                <TableCell>
+                  {typeof expense.status === "object"
+                    ? expense.status.label 
+                    : expense.status}
+                </TableCell>
 
                 <TableCell>
-                  <a
-                    href={"http://localhost:8080/" + expense.recipt}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    download
-                  >
-                    <Button
-                      variant="light"
-                      color="primary"
-                      style={{ backgroundColor: "#e7e7e7", color: "black" }}
+                  {expense.recipt ? (
+                    <a
+                      href={`http://localhost:8080/${expense.recipt}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download
                     >
-                      View{" "}
-                    </Button>
-                  </a>
+                      <Button
+                        variant="light"
+                        color="primary"
+                        style={{ backgroundColor: "#e7e7e7", color: "black" }}
+                      >
+                        View
+                      </Button>
+                    </a>
+                  ) : (
+                    "—"
+                  )}
                 </TableCell>
               </TableRow>
             ))}

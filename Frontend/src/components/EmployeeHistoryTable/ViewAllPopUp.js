@@ -177,9 +177,9 @@ const ViewAllPopUp = ({ open, handleClose }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {sortedData.map((expense) => (
-                  <TableRow key={expense.expense_id}>
-                    <TableCell>{expense.expense_id}</TableCell>
+                {sortedData.map((expense,index) => (
+                  <TableRow key={index}>
+                    <TableCell>{index}</TableCell>
                     <TableCell>{expense.date}</TableCell>
                     <TableCell>{expense.category}</TableCell>
                     <TableCell>₹ {expense.amount.toFixed(2)}</TableCell>
