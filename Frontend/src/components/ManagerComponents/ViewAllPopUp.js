@@ -183,9 +183,9 @@ const ViewAllPopUp = ({ open, handleClose }) => {
               </TableHead>
 
               <TableBody>
-                {paginatedData.map((row) => (
-                  <TableRow key={row.expense_id}>
-                    <TableCell>{row.expenseId}</TableCell>
+                {paginatedData.map((row,index) => (
+                  <TableRow key={index}>
+                    <TableCell>{index}</TableCell>
                     {/* <TableCell>{row.empName}</TableCell>
     <TableCell>{row.empPosition}</TableCell> */}
                     <TableCell>{row.category}</TableCell>
